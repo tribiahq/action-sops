@@ -1,0 +1,16 @@
+name: Mozilla Sops Action
+description: A GitHub Action wrapping Mozilla sops
+author: Asgeir Frimannsson
+branding:
+  icon: shield
+  color: orange
+
+inputs:
+  gpgPrivateKey:
+    description: GPG private key used to decrypt secrets
+    required: false
+runs:
+  using: docker
+  image: docker://quay.io/symetri/sops:v3.5.0
+  env:
+    PRIVATE_KEY: ${{ inputs.gpgPrivateKey }}
